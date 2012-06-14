@@ -1,5 +1,3 @@
-require 'capistrano/tbg/common'
-
 unless Capistrano::Configuration.respond_to?(:instance)
   abort "capistrano/tbg/deploy requires Capistrano 2"
 end
