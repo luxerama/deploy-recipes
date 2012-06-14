@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "deploy-recipes"
   gem.require_paths = ["lib"]
   gem.version       = Deploy::Recipes::VERSION
+  
+  gem.add_dependency "capistrano", ">= 2.5.9"
 end

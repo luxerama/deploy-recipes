@@ -1,7 +1,5 @@
-require "deploy-recipes/version"
+require 'capistrano'
+require 'capistrano/cli'
+require "#{File.dirname(__FILE__)}/helpers"
 
-module Deploy
-  module Recipes
-    # Your code goes here...
-  end
-end
+Dir.glob(File.join(File.dirname(__FILE__), '/deploy-recipes/*.rb')).sort.each { |f| load f }
