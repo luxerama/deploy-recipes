@@ -23,7 +23,7 @@ The way of setting them is as follows:
 	set :option_name, option_value
 
 ## Capistrano Helper Usage
-This Gem also contains some helpers that can be used with capistrano
+This Gem contains some helpers that can be used with capistrano. Helpers generally need to be loaded at the top of the `deploy.rb` script.
 
 ### AWS EC2
 The AWS EC2 task is used to dynamically set the web, app and db server valiables in your deploy.rb file.
@@ -33,10 +33,11 @@ For this helper to work properly you need to set the following vaiables in your 
 * `secret_access_key` (required) - You AWS secret access key
 
 ## Capistrano Tasks Usage
-
+This section describes the tasks that are available with 
 
 ### Database
-This task can be used to generate the database configuration file for a project.
+This task can be used to generate the database configuration file for a project. During the execution of this taks it will ask you to enter the password of the database.   
+This tasks will be executed once required in the `deploy.rb` file. For more information when this task will be run please look towards the end of this taks.
 
 ### Deploy Automation
 The deploy automation task can be used with Pivotal Tracker and Git to make deployment and managing deploys easier.
@@ -46,6 +47,7 @@ For this task to work properly you need to set the following vaiables in your `d
 * `changelog_location` (optional)    - Define the location at which you would like the changelog to be stored. At the moment this has to be within 
 the scope of the Git repository because this task expects to be able to commit the changelog and push it to the remote branch.
 
+This tasks will be executed after the `deploy:cleanup` task, once required in the `deploy.rb` file.
 
 ## Contributing
 
