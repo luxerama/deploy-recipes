@@ -17,8 +17,35 @@ Or install it yourself as:
     $ gem install deploy-recipes
 
 ## Usage
+This Gem provides deployment helpers and task used by [The Beans Group][1]. Some tasks and helpers require extra configuration. At the moment the only way of providing the extra configuration options is to set those in the `deploy.rb` sript.  
+The way of setting them is as follows:
 
-TODO: Write usage instructions here
+	set :option_name, option_value
+
+## Capistrano Helper Usage
+This Gem also contains some helpers that can be used with capistrano
+
+### AWS EC2
+The AWS EC2 task is used to dynamically set the web, app and db server valiables in your deploy.rb file.
+For this helper to work properly you need to set the following vaiables in your `deploy.rb` file:
+
+* `access_key_id` (required)      - Your AWS access key id
+* `secret_access_key` (required) - You AWS secret access key
+
+## Capistrano Tasks Usage
+
+
+### Database
+This task can be used to generate the database configuration file for a project.
+
+### Deploy Automation
+The deploy automation task can be used with Pivotal Tracker and Git to make deployment and managing deploys easier.
+For this task to work properly you need to set the following vaiables in your `deploy.rb` file:
+
+* `pivotal_tracker_token` (required) - This is the API token needed to interact with your PT account
+* `changelog_location` (optional)    - Define the location at which you would like the changelog to be stored. At the moment this has to be within 
+the scope of the Git repository because this task expects to be able to commit the changelog and push it to the remote branch.
+
 
 ## Contributing
 
@@ -27,3 +54,5 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[1]: http://www.thebeansgroup.com "The Beans Group"
