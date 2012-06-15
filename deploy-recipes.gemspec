@@ -16,4 +16,8 @@ Gem::Specification.new do |gem|
   gem.version       = Deploy::Recipes::VERSION
   
   gem.add_dependency "capistrano", ">= 2.5.9"
+  gem.add_dependency "pivotal-tracker", ">= 0.5.4"
+  gem.add_dependency "grit", ">= 2.5.0"
+  gem.add_dependency "tinder", ">= 1.8.0"
+  gem.add_dependency "aws-sdk", ">= 1.5.3"
 end
