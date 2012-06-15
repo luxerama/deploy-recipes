@@ -1,6 +1,6 @@
 # Deploy::Recipes
 
-TODO: Write a gem description
+This Gem provides deployment helpers and task used by [The Beans Group][1].
 
 ## Installation
 
@@ -17,7 +17,7 @@ Or install it yourself as:
     $ gem install deploy-recipes
 
 ## Usage
-This Gem provides deployment helpers and task used by [The Beans Group][1]. Some tasks and helpers require extra configuration. At the moment the only way of providing the extra configuration options is to set those in the `deploy.rb` sript.  
+Some tasks and helpers require extra configuration. At the moment the only way of providing the extra configuration options is to set those in the `deploy.rb` sript.  
 The way of setting them is as follows:
 
 	set :option_name, option_value
