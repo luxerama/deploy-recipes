@@ -1,3 +1,7 @@
+require "pivotal-tracker"
+require "grit"
+require "tinder"
+
 unless Capistrano::Configuration.respond_to?(:instance)
   abort "This extension requires Capistrano 2"
 end
@@ -6,9 +10,13 @@ Capistrano::Configuration.instance.load do
   namespace :deploy do
     namespace :automation do
       desc "Get all referenced pivotal tracker stories"
-      task :create_changelog, [:message]  => :environment do |t, args|
+      task :create_changelog do
         
         # validate Pivotal Tracker settings
+        _cset(:pivotal_tracker_token) { Capistrano::CLI.ui.ask("Enter your Pivotal Tracker tocken: ") }
+      
+        # validate Campfire settings
+        _cset(:pivotal_tracker_token) { Capistrano::CLI.ui.ask("Enter your Pivotal Tracker tocken: ") }
         _cset(:pivotal_tracker_token) { Capistrano::CLI.ui.ask("Enter your Pivotal Tracker tocken: ") }
       
         _cset(:changelog_location) { "#{Rails.root}/CHANGELOG.md" }
