@@ -23,7 +23,7 @@ The way of setting them is as follows:
 	set :option_name, option_value
 
 ## Capistrano Helper Usage
-This Gem contains some helpers that can be used with capistrano. Helpers generally need to be loaded at the top of the `deploy.rb` script.
+This Gem contains some helpers that can be used with capistrano. Helpers generally need to be loaded at the top of the `deploy.rb` script, if not otherwise stated.
 
 ### AWS EC2
 The AWS EC2 task is used to dynamically set the web, app and db server valiables in your deploy.rb file.
@@ -33,7 +33,7 @@ For this helper to work properly you need to set the following vaiables in your 
 * `secret_access_key` (required) - You AWS secret access key
 
 ## Capistrano Tasks Usage
-This section describes the tasks that are available with 
+This section describes the tasks made available by this Gem. Tasks are generally (if not otherwise stated) loaded at the end of the `deploy.rb` script.
 
 ### Database
 This task can be used to generate the database configuration file for a project. During the execution of this taks it will ask you to enter the password of the database.   
