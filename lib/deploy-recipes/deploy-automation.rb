@@ -110,7 +110,6 @@ Capistrano::Configuration.instance.load do
         end
       end
     end
+    after "deploy:cleanup", "deploy:automation"
   end
 end
-
-after "deploy:cleanup", "deploy:automation"
