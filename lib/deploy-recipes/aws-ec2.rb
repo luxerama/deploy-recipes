@@ -2,11 +2,6 @@
 require 'aws'
 # # log requests using the default rails logger
 # AWS.config(:logger => Rails.logger)
-# # load credentials from a file
-# config_path = File.expand_path(File.dirname(__FILE__) + "/../aws.yml")
-# AWS.config(YAML.load(File.read(config_path)))
-# @TODO need to grab the auth details from a config file
-# AWS.config :access_key_id => '', :secret_access_key => ''
 
 def aws_ec2_role(which, *args, &block)
   
@@ -15,6 +10,8 @@ def aws_ec2_role(which, *args, &block)
   # validate EC2 settings
   _cset(:access_key_id) { Capistrano::CLI.ui.ask("Enter your AWS access key ID: ") }
   _cset(:secret_access_key) { Capistrano::CLI.ui.ask("Enter your AWS secret key: ") }
+  
+  AWS.config :access_key_id => access_key_id, :secret_access_key => secret_access_key 
   
   ec2 = AWS::EC2.new
   # optionally switch to a non-default region
@@ -49,5 +46,5 @@ def aws_ec2_role(which, *args, &block)
   end
   # @TODO we need to make sure we merge the dns names with the other args
   args = instances.map {|i| i.dns_name}
-  role which, *args, block
+  role which, *args
 end
