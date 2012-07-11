@@ -4,27 +4,27 @@ end
 
 Capistrano::Configuration.instance.load do
   # User details
-  _cset :user,          'deploy'
+  _cset :user,          "deploy"
   _cset(:group)         { user }
   
   # @TODO utilise a deployment config file outside the project to be able to DRY the deploy config system
-  _cset :config_file,   '/home/#{user}/.deployment-configs.yml'
+  _cset :config_file,   "~/.deployment-configs.yml"
   
   # Application details
   _cset(:application)   { abort "Please specify the short name of your application, set :application, 'foo'" }
   _cset :use_sudo,      false
 
   # SCM settings
-  _cset(:deploy_to)       { "/home/#{user}/deployments/#{application}" }
-  _cset :scm,           'git'
-  _cset :branch,        'master'
-  _cset :deploy_via,    'remote_cache'
+  _cset(:deploy_to) { "/var/www/apps/#{application}" }
+  _cset :scm,           "git"
+  _cset :branch,        "master"
+  _cset :deploy_via,    "remote_cache"
 
   # Git settings for Capistrano
-  default_run_options[:pty]     = true # needed for git password prompts
-  ssh_options[:forward_agent]   = true # use the keys for the person running the cap command to check out the append
-  ssh_options[:auth_methods]    = ["publickey"]
-  ssh_options[:keys]            = [File.join(ENV["HOME"], ".ssh", user)]
+  _cdefault_run_options :pty,   true # needed for git password prompts
+  _cssh_options :forward_agent, true # use the keys for the person running the cap command to check out the append
+  _cssh_options :auth_methods,  ["publickey"]
+  _cssh_options :keys,          [File.join(ENV["HOME"], ".ssh", user)]
   
   # If you are using Passenger mod_rails uncomment this:
   namespace :deploy do
