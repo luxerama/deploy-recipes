@@ -25,6 +25,9 @@ The way of setting them is as follows:
 ## Capistrano Helper Usage
 This Gem contains some helpers that can be used with capistrano. Helpers generally need to be loaded at the top of the `deploy.rb` script, if not otherwise stated.
 
+## SCM
+Unfortunately I have yet to find an easy way of defaulting capistrano to git. This means that both `scm` and `repository` have to be set in the deploy.rb file.
+
 ### AWS EC2
 The AWS EC2 task is used to dynamically set the web, app and db server valiables in your deploy.rb file.
 For this helper to work properly you need to set the following vaiables in your `deploy.rb` file:
@@ -44,7 +47,7 @@ The deploy automation task can be used with Pivotal Tracker and Git to make depl
 For this task to work properly you need to set the following vaiables in your `deploy.rb` file:
 
 * `pivotal_tracker_token` (required) - This is the API token needed to interact with your PT account
-* `changelog_location` (optional)    - Define the location at which you would like the changelog to be stored. At the moment this has to be within 
+* `changelog_location` (optional)    - Define the location at which you would like the changelog to be stored. At the moment this has to be within
 the scope of the Git repository because this task expects to be able to commit the changelog and push it to the remote branch.
 
 This tasks will be executed after the `deploy:cleanup` task, once required in the `deploy.rb` file.
