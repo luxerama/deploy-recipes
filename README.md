@@ -22,11 +22,11 @@ The way of setting them is as follows:
 
 	set :option_name, option_value
 
+### SCM
+Unfortunately I have yet to find an easy way of defaulting capistrano to git. This means that both `scm` and `repository` have to be set in the deploy.rb file.
+
 ## Capistrano Helper Usage
 This Gem contains some helpers that can be used with capistrano. Helpers generally need to be loaded at the top of the `deploy.rb` script, if not otherwise stated.
-
-## SCM
-Unfortunately I have yet to find an easy way of defaulting capistrano to git. This means that both `scm` and `repository` have to be set in the deploy.rb file.
 
 ### AWS EC2
 The AWS EC2 task is used to dynamically set the web, app and db server valiables in your deploy.rb file.
